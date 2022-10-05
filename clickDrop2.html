@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav{
+            width: 100vw;
+            background: gray;
+        }
+        ul{
+            display: flex;
+        }
+        li.menu{
+            list-style: none;
+            position: relative;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+        }
+        li.menu:hover{
+            background-color: rgba(250, 235, 215, 0.363);
+        }
+
+        li .sub-menu{ 
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            left: 0;
+            top: 100%;
+            background-color: rgba(0, 0, 0, 0.514);
+            display: none;
+            list-style: none;
+        }
+        .menu.active .sub-menu{
+            display: block;
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="menu">Home</li>
+            <li class="menu">Product
+                <ul class="sub-menu">
+                    <li>apple</li>
+                    <li>google</li>
+                    <li>meta</li>
+                </ul>
+            </li>
+             
+            <li class="menu">About Us</li>
+            <li class="menu">Contact
+                <ul class="sub-menu">
+                    <li>Facebook</li>
+                    <li>Youtube</li>
+                    <li>Google</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        let menu = document.querySelectorAll('.menu')
+       
+
+
+        // for(let i = 0 ; i< menu.length; i++){
+        //     menu[i].addEventListener('click', (e) =>{
+        //         menu.forEach(clik =>{
+        //            if(clik.classList.contains('active')){
+        //             clik.classList.remove('active')
+        //            })    
+                   
+                
+        //     }
+            
+        // }}
+
+        // for(let i = 0; i< menu.length; i++){
+        //     menu[i].addEventListener('click', (e) =>{
+        //         e.target.classList.toggle('active')
+        //     })
+        // }
+       
+
+        for(let i = 0; i< menu.length; i++){
+            menu[i].addEventListener('click', (e) =>{
+
+                menu.forEach(element =>{
+                    if(element.classList.contains('active')){
+                        element.classList.remove('active')
+                    }
+                })
+           e.target.classList.toggle('active')
+
+                 
+            })
+        }
+
+        
+
+        window.onclick = (e)=>{
+                if(!e.target.matches('.menu')){
+                    for(let i = 0; i< menu.length; i++){
+                        if(menu[i].classList.contains('active')){
+                            menu[i].classList.remove('active')
+                        }
+                    }
+                }
+            }
+
+        
+    </script>
+</body>
+</html>
